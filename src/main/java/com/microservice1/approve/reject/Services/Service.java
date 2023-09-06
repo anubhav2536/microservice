@@ -3,6 +3,10 @@ package com.microservice1.approve.reject.Services;
 import com.microservice1.approve.reject.Model.APPROVED;
 import com.microservice1.approve.reject.Repositeries.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @org.springframework.stereotype.Service
 public class Service {
@@ -25,6 +29,11 @@ public class Service {
         apr.setApproved(false);
         repository.save(apr);
         return "success";
+    }
+    public Iterable<APPROVED> viewAll(){
+
+
+        return repository.findAll();
     }
 
 }

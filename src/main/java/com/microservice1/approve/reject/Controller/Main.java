@@ -1,12 +1,14 @@
 package com.microservice1.approve.reject.Controller;
 
+import com.microservice1.approve.reject.Model.APPROVED;
 import com.microservice1.approve.reject.Services.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
+@RequestMapping("/admin")
 public class Main {
     @Autowired
     Service service;
@@ -16,6 +18,10 @@ public class Main {
        return  service.approve(id);
         else
           return  service.reject(id);
+    }
+    @GetMapping("/viewAll")
+    public Iterable<APPROVED> viewAll(){
+        return service.viewAll();
     }
 
 
